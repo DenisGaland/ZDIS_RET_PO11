@@ -1,0 +1,125 @@
+/* Enter your custom styles here */
+.sapTntNavLIGroupItem:not (.sapTntNavLIItemDisabled ) {
+	background-color: #E8E8E8;
+}
+
+.tileborder {
+	border: 2px solid #b8b6b8 !important;
+}
+
+.bold {
+	font-weight: bold !important;
+}
+.promo {
+	color : red !important;
+}
+
+.searchfield2 {
+	margin-left: 150px;
+	margin-top: 30px;
+}
+
+.sapMInputBaseInner {
+	padding: 0 0!important;
+	
+	}
+.sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner){
+	height: 25px!important;
+	
+	}
+	
+.sapMInputDescription>span {
+
+    line-height: 1.5rem!important
+    
+}
+
+.sapTntNavLIGroupItem>.sapMText {
+    padding-left: 4rem!important;
+}
+
+.twolines {
+	position: absolute;
+	
+}
+
+.color {
+
+	color : blue;
+
+}
+
+.color2 {
+
+	color : red;
+}
+
+
+.uniteof {
+	    padding-top: 1rem;
+}
+
+.sapMLIBSelectD>.sapUiIcon {
+
+    padding-bottom: 70px!important;
+
+}
+
+.tableItems tr:first-child td {
+    background-color: lightgreen;
+}  
+
+.tableItems th {
+    background-color: deepskyblue;
+}
+
+/*#__xmlview0--table1-tblBody{
+	background-color: lightskyblue!important;
+}
+
+#__item0-__xmlview0--table1-0
+{
+	background-color: lightblue!important;
+}
+
+#__xmlview0--table1-tblHead7{
+	background-color: white!important;
+}
+
+#__xmlview0--table1-tblHead8{
+	background-color: white!important;
+}
+
+#__xmlview0--table1-tblHead6 {
+	background-color: white!important;
+}
+
+#__label0  {
+	color: YELLOWGREEN!important;
+}
+
+
+#__xmlview0--table1-tblHead0 {
+	background-color: white!important;
+}
+
+#__xmlview0--table1-tblHead1 {
+	background-color: white!important;
+}
+
+#__xmlview0--table1-tblHead2 {
+	background-color: white!important;
+}
+
+#__xmlview0--table1-tblHead3 {
+	background-color: white!important;
+	label : "TOTO";
+}
+
+#__xmlview0--table1-tblHead4 {
+	background-color: white!important;
+}
+
+#__xmlview0--table1-tblHead5 {
+	background-color: white!important;
+}*/

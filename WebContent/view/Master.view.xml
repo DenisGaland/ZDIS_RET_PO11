@@ -1,0 +1,100 @@
+<mvc:View controllerName="Press_Shop_Fiori3.controller.Master" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core" xmlns:m="sap.m" xmlns:core="sap.ui.core" html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:ui="sap.ui.commons" xmlns:tnt="sap.tnt" displayBlock="true">
+	<m:App>
+		<m:pages>
+			<m:Page showHeader="false" enableScrolling="false">
+				<m:content>
+					<!-- Begin Header -->
+					<m:Label text="{i18n>confirm}" width="100%" id="CONFIRM" visible="false"/>
+					<m:Label text="{i18n>yes}" width="100%" id="YES" visible="false"/>
+					<m:Label text="{i18n>no}" width="100%" id="NO" visible="false"/>
+					<m:HBox width="100%" id="Type" alignContent="Start" alignItems="Center">
+						<m:items>
+							<m:HBox width="5%" id="Spa" alignContent="Start" alignItems="Center"></m:HBox>
+							<m:Label text="{i18n>rpo}" width="100%" design="Bold"/>
+						</m:items>
+					</m:HBox>
+					<m:HBox width="100%" id="H_PLANT" alignContent="Start" alignItems="Center" visible="true">
+						<m:items>
+							<m:Label text="{i18n>site}" width="100%" design="Bold" textAlign="Center"/>
+							<m:HBox width="2.5%" id="Space6" alignContent="Start" alignItems="Center"></m:HBox>
+							<m:SearchField width="130%" id="__PLANT" enabled="false" placeholder=""/>
+						</m:items>
+					</m:HBox>
+					<!-- End Header -->
+					<!-- Begin scan input -->
+					<m:HBox width="100%" id="Article" alignContent="Start" alignItems="Center" visible="true">
+						<m:items>
+							<m:Label text="{i18n>scanean}" width="100%" id="__label0_copy" design="Bold" textAlign="Center"/>
+							<m:SearchField width="100%" id="SearchArt" placeholder="" search="searchArt"/>
+						</m:items>
+					</m:HBox>
+					<!-- End scan input -->
+					<!-- Begin Table -->
+					<m:HBox width="100%" id="TOOL_BAR" alignContent="Start" alignItems="Center" visible="false">
+						<m:Toolbar>
+							<m:content>
+								<m:Button text="{i18n>confirme}" icon="sap-icon://save" tooltip="Recept selected items" press="Validate" type="Emphasized"/>
+								<m:Button icon="sap-icon://delete" tooltip="clear selection" press="ClearBox" text="{i18n>annule}" type="Emphasized"/>
+							</m:content>
+						</m:Toolbar>
+					</m:HBox>
+					<m:Button text="Back" icon="sap-icon://undo" tooltip="Recept selected items" press="BackInit" id="Back" type="Emphasized" width="100px"
+						visible="false"/>
+					<m:ScrollContainer horizontal="true" vertical="true" focusable="true" height="420px">
+						<m:Table id="table1" items="{itemModel>/items}" selectionMode="None" visibleRowCount="10" ariaLabelledBy="title" width="100%"
+							visible="false" class="tableItems">
+							<m:columns>
+								<m:Column width="2rem">
+									<m:Label text="{i18n>ean}"/>
+								</m:Column>
+								<m:Column width="4.5rem">
+									<m:Label text="{i18n>desc}({Model2>/Products})"/>
+								</m:Column>
+								<m:Column width="1em" class="yellow">
+									<m:Label text="{i18n>fournisseur}"/>
+								</m:Column>
+								<!--<m:Column width="1rem">
+							<m:Label text="{i18n>bunit}"/>
+						</m:Column>
+						<m:Column width="1rem">
+							<m:Label text="{i18n>ounit}"/>
+						</m:Column>-->
+								<m:Column width="1rem">
+									<m:Label text="{i18n>qty}"/>
+								</m:Column>
+								<!--<m:Column width="1rem"></m:Column>
+						<m:Column width="1rem">
+							<m:Label text=""/>
+						</m:Column>-->
+							</m:columns>
+							<m:items>
+								<m:ColumnListItem>
+									<m:cells>
+										<m:Text text="{itemModel>Gtin}"/>
+										<m:Text text="{itemModel>maktx}"/>
+										<m:Text text="{itemModel>LIFNR}" class="bold"/>
+										<!--<m:Text text="{itemModel>Meins}" class="bold"/>
+								<m:Text text="{itemModel>BSTME}" class="bold"/>-->
+										<m:Text text="{itemModel>Menge_f}" class="bold"/>
+										<!--<m:Button text="" width="5rem" icon="sap-icon://negative" tooltip="Recept selected items" press="getContextByIndexn" type="Reject"/>
+								<m:Button text="" width="5rem" icon="sap-icon://positive" tooltip="Recept selected items" press="getContextByIndexp" type="Accept"/>-->
+									</m:cells>
+								</m:ColumnListItem>
+							</m:items>
+						</m:Table>
+					</m:ScrollContainer>
+					<!-- Begin Table -->
+					<!--<m:HBox width="100%" id="Scroll" alignContent="Start" alignItems="Center" visible="false">
+				<m:HBox width="1000000%" id="Spac" alignContent="Start" alignItems="Center"></m:HBox>
+				<m:VBox width="100%" id="Scollvert" alignContent="Start" alignItems="Center">
+					<sap.ui.core:Icon src="sap-icon://collapse-group" size="1em" xmlns:sap.ui.core="sap.ui.core" id="icon11"/>
+					<sap.ui.core:Icon src="sap-icon://expand-group" size="1em" xmlns:sap.ui.core="sap.ui.core" id="icon10"/>
+				</m:VBox>
+			</m:HBox>-->
+				</m:content>
+			</m:Page>
+		</m:pages>
+	</m:App>
+</mvc:View>
