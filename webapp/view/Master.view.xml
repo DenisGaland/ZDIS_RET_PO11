@@ -37,6 +37,8 @@
 							<m:content>
 								<m:Button text="{i18n>confirme}" icon="sap-icon://save" tooltip="Recept selected items" press="Validate" type="Emphasized"/>
 								<m:Button icon="sap-icon://delete" tooltip="clear selection" press="ClearBox" text="{i18n>annule}" type="Emphasized"/>
+								<m:Button id="fillvendor" icon="sap-icon://complete" tooltip="complete missing Vendor" press="fillmissingvendor" text="{i18n>fillmissing}"
+									type="Emphasized" visible="false"/>
 							</m:content>
 						</m:Toolbar>
 					</m:HBox>
@@ -44,7 +46,7 @@
 						visible="false"/>
 					<m:ScrollContainer horizontal="true" vertical="true" focusable="true" height="420px">
 						<m:Table id="table1" items="{itemModel>/items}" selectionMode="None" visibleRowCount="10" ariaLabelledBy="title" width="100%"
-							visible="false" class="tableItems">
+							visible="false" class="tableItems" updateFinished="checkvendor">
 							<m:columns>
 								<m:Column width="2rem">
 									<m:Label text="{i18n>ean}"/>

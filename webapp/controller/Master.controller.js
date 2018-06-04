@@ -127,6 +127,7 @@ sap.ui.define([
 		},
 
 		GetData: function(material) {
+			var oController = this;
 			var oView = this.getView();
 			var oTable = oView.byId("table1");
 			oTable.setVisible(true);
@@ -156,6 +157,7 @@ sap.ui.define([
 				});
 				model.setSizeLimit(100);
 				oView.setModel(model, "itemModel");
+				//oController.checkvendor();
 				jQuery.sap.delayedCall(500, this, function() {
 					oView.byId("SearchArt").focus();
 				});
@@ -186,6 +188,86 @@ sap.ui.define([
 						});
 					}
 				});
+		},
+
+		_getDialog: function() {
+			if (!this._oDialog) {
+				this._oDialog = sap.ui.xmlfragment("Press_Shop_Fiori3.view.ChooseVendor", this);
+				this.getView().addDependent(this._oDialog);
+			}
+			return this._oDialog;
+		},
+
+		onOpenDialog: function() {
+			this._getDialog().open();
+		},
+
+		onSave: function(event) {
+			var oController = this;
+			var vendor = sap.ui.getCore().byId("oSelect").getSelectedKey();
+			var matnr = this._getDialog().getBindingContext().getObject().Matnr;
+			this._getDialog().close();
+			var sPath = "/UpdateVendor";
+			var sServiceUrl = "/sap/opu/odata/sap/ZPREPARE_FLUX_SRV/";
+			var oModel = new sap.ui.model.odata.v2.ODataModel(sServiceUrl, true);
+			oModel.callFunction(sPath, {
+				method: "GET",
+				urlParameters: {
+					lifnr: vendor,
+					Matnr: matnr
+				},
+				success: function(oData, response) {
+					MessageBox.show("Vendor updated", {
+						icon: MessageBox.Icon.INFORMATION,
+						onClose: function() {
+							oController._getDialog().unbindContext();
+							oController.GetData();
+						}
+					});
+				},
+				error: function(error) {
+					oController._getDialog().unbindContext();
+					MessageBox.error(JSON.parse(error.response.body).error.message.value, {
+						title: "Error"
+					});
+				}
+			});
+		},
+
+		fillmissingvendor: function(oEvent) {
+			var oController = this;
+			var oView = this.getView();
+			var found = false;
+			oView.byId("table1").getItems().forEach(function(row) {
+				if (row.getCells()[2].getText() === "" && found === false) {
+					found = true;
+					oController.onOpenDialog();
+					var query = "/ArticleSet('" + row.getCells()[0].getText() + "')";
+					oController._getDialog().bindElement({
+						path: query,
+						parameters: {
+							expand: "ArticleVendor"
+						}
+					});
+				}
+			});
+			if (found === false) {
+				MessageBox.show("All Vendors are filled");
+			}
+		},
+
+		checkvendor: function() {
+			// var oView = this.getView();
+			// var found = false;
+			// oView.byId("table1").getItems().forEach(function(row) {
+			// 	if (row.getCells()[2].getText() === "") {
+			// 		oView.byId("fillvendor").setVisible(true);
+			// 		found = true;
+			// 	}
+			// });
+			// if (found === false) {
+			// 	oView.byId("fillvendor").setVisible(false);
+			// }
 		},
 
 		SaveData: function() {

@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<!--<BusyDialog title="{i18n>loadingData}"
+                        text="{i18n>loadingData}"
+                        showCancelButton="false"
+      />-->
+	<Dialog title="Choose a Vendor for Article {Matnr}">
+		<Select id="oSelect" autoAdjustWidth="true" forceSelection="false" items="{ArticleVendor}">
+			<core:ListItem key="{vendor}" text="{name}"/>
+		</Select>
+		<beginButton>
+			<Button text="Save" press="onSave"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>
